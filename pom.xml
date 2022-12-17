@@ -54,6 +54,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>poll-maker-api</finalName>
 	</build>
 
 </project>
