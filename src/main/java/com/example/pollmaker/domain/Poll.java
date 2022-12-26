@@ -6,9 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
+
 import java.util.List;
 
 @Data
@@ -18,6 +20,7 @@ import java.util.List;
 @Document
 public class Poll {
 
+
     @Id
     private String id;
     private String title;
@@ -26,4 +29,10 @@ public class Poll {
 
     @CreatedDate
     private LocalDateTime createdAt;
+
+   // @LastModifiedDate
+   // private Date modifiedOn;
+
+   // @Version
+   // private Long version;
 }
