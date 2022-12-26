@@ -1,11 +1,10 @@
 package com.example.pollmaker.model.poll;
 
-import com.example.pollmaker.domain.Option;
-import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Data
@@ -17,5 +16,5 @@ public class CreatePollRequest {
     private String title;
 
     @NotEmpty
-    private List<Option> options;
+    private List<String> options;
 }
