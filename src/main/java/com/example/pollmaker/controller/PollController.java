@@ -7,10 +7,9 @@ import com.example.pollmaker.service.PollService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @AllArgsConstructor
@@ -20,9 +19,15 @@ public class PollController {
 
     private final PollService pollService;
 
-    @PostMapping("/create-poll")
+    @PostMapping("/create")
     public ResponseEntity<PollDTO> createPoll(@RequestBody CreatePollRequest createPollRequest){
         PollDTO pollDTO = pollService.createPoll(createPollRequest);
         return new ResponseEntity(pollDTO, HttpStatus.OK);
     }
+
+   /* @GetMapping("/polls")
+    public ResponseEntity<List<PollDTO>> getPolls(){
+         return new ResponseEntity(pollService.getPolls(), HttpStatus.OK);
+    }*/
+
 }
