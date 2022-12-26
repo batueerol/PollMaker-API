@@ -13,8 +13,6 @@ import org.bson.types.ObjectId;
 @NoArgsConstructor
 @Builder
 public class Option {
-
-
     @Builder.Default
     private String id = new ObjectId().toString();
     String value;

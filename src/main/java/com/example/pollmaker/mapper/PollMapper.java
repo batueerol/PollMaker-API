@@ -5,15 +5,13 @@ import com.example.pollmaker.model.dto.PollDTO;
 import com.example.pollmaker.model.poll.CreatePollRequest;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.mapstruct.Mapper;
+
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 
 import static com.example.pollmaker.utils.Util.isNull;
 
-//@RequiredArgsConstructor
+
 @Component
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class PollMapper {
@@ -34,7 +32,7 @@ public class PollMapper {
 
         return poll;
     }
-    public PollDTO PollToCreatePollDto(Poll poll){
+    public PollDTO PollToPollDto(Poll poll){
         if(isNull(poll)){
             return null;
         }
