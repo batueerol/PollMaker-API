@@ -22,6 +22,14 @@ public class PollController {
     @PostMapping("/create")
     public ResponseEntity<PollDTO> createPoll(@RequestBody CreatePollRequest createPollRequest){
         PollDTO pollDTO = pollService.createPoll(createPollRequest);
+
+        return new ResponseEntity(pollDTO, HttpStatus.OK);
+    }
+
+    @PutMapping("/update/{pollId}")
+    public ResponseEntity<PollDTO> updatePoll(@PathVariable String pollId, @RequestBody CreatePollRequest createPollRequest){
+        PollDTO pollDTO = pollService.updatePoll(pollId, createPollRequest);
+
         return new ResponseEntity(pollDTO, HttpStatus.OK);
     }
 
