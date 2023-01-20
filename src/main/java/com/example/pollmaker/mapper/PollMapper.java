@@ -18,32 +18,32 @@ public class PollMapper {
     //public abstract Poll CreatePollRequestToPoll(CreatePollRequest createPollRequest);
 
     private final OptionMapper optionMapper;
+
+    //logger
     public Poll CreatePollRequestToPoll(CreatePollRequest createPollRequest){
 
         if(isNull(createPollRequest)){
             return null;
         }
 
-        Poll poll = Poll.builder()
+        return Poll.builder()
                 .title(createPollRequest.getTitle())
                 .options(optionMapper.StringToOption(createPollRequest.getOptions()))
                 .ownerName("admin")
                 .build();
 
-        return poll;
     }
     public PollDTO PollToPollDto(Poll poll){
         if(isNull(poll)){
             return null;
         }
 
-        PollDTO pollDTO = PollDTO.builder()
+        return PollDTO.builder()
                 .title(poll.getTitle())
                 .options(optionMapper.optionToOptionDTO(poll.getOptions()))
                 .ownerName("admin")
                 .build();
 
-        return pollDTO;
     }
 
 

@@ -2,9 +2,8 @@ package com.example.pollmaker.utils;
 
 public class Util {
 
+    //constants tanımla
     public static boolean isNull(Object object){
-        if(object == null)
-            return true;
-        return false;
+        return object == null;
     }
 }

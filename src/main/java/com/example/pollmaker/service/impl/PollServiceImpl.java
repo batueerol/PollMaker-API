@@ -1,9 +1,11 @@
 package com.example.pollmaker.service.impl;
 
+import com.example.pollmaker.domain.Option;
 import com.example.pollmaker.domain.Poll;
 import com.example.pollmaker.mapper.PollMapper;
 import com.example.pollmaker.model.dto.PollDTO;
 import com.example.pollmaker.model.poll.CreatePollRequest;
+import com.example.pollmaker.model.poll.VoteRequest;
 import com.example.pollmaker.repository.PollRepository;
 import com.example.pollmaker.service.PollService;
 import lombok.RequiredArgsConstructor;
@@ -54,9 +56,26 @@ public class PollServiceImpl implements PollService {
         return pollMapper.PollToPollDto(poll);
     }
 
+    public PollDTO vote(String pollId, VoteRequest voteRequest){
+        Query query = new Query();
+        Criteria criteria = new Criteria();
+        criteria.andOperator(Criteria.where("_id").is(pollId),
+                Criteria.where("options").elemMatch(Criteria.where("_id").is(voteRequest.getOptionId()))); // elemMatch controls the object in array.
+
+        query.addCriteria(criteria);
+
+        Update update = new Update();
+        update.inc("options.$.voteCount", 1); // $ Acts as a placeholder to update the first element that matches the query condition.
+
+        mongoOperations.updateFirst(query, update, Poll.class);
+
+        Poll poll = mongoTemplate.findOne(query, Poll.class);
+
+        return pollMapper.PollToPollDto(poll);
+    }
     @Override
     public List<PollDTO> getPolls() {
-        List<Poll> polls = pollRepository.findAll();
+        List<Poll> polls = pollRepository.findAll(); //pagination
 
         List<PollDTO> pollDTOS = new ArrayList<>();
 

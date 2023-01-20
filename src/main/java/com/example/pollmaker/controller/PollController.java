@@ -3,6 +3,7 @@ package com.example.pollmaker.controller;
 
 import com.example.pollmaker.model.dto.PollDTO;
 import com.example.pollmaker.model.poll.CreatePollRequest;
+import com.example.pollmaker.model.poll.VoteRequest;
 import com.example.pollmaker.service.PollService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,8 @@ public class PollController {
     public ResponseEntity<PollDTO> createPoll(@RequestBody CreatePollRequest createPollRequest){
         PollDTO pollDTO = pollService.createPoll(createPollRequest);
 
-        return new ResponseEntity(pollDTO, HttpStatus.OK);
+        return ResponseEntity.ok(pollDTO);
+                //new ResponseEntity(pollDTO, HttpStatus.OK);
     }
 
     @PutMapping("/update/{pollId}")
@@ -31,6 +33,11 @@ public class PollController {
         PollDTO pollDTO = pollService.updatePoll(pollId, createPollRequest);
 
         return new ResponseEntity(pollDTO, HttpStatus.OK);
+    }
+
+    @PutMapping("/vote/{pollId}")
+    public ResponseEntity<PollDTO> vote(@PathVariable String pollId, @RequestBody VoteRequest voteRequest){
+        return ResponseEntity.ok(pollService.vote(pollId, voteRequest));
     }
 
    /* @GetMapping("/polls")

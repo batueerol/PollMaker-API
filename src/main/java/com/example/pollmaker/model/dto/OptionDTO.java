@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -14,5 +16,6 @@ import lombok.NoArgsConstructor;
 public class OptionDTO {
     @JsonSerialize(using = ToStringSerializer.class)
     private String id;
+    @NotNull
     String value;
 }
