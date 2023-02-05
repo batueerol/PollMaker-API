@@ -19,7 +19,7 @@ public class PollMapper {
     private final OptionMapper optionMapper;
 
     //logger
-    public Poll CreatePollRequestToPoll(CreatePollRequest createPollRequest){
+    public Poll createPollRequestToPoll(CreatePollRequest createPollRequest){
 
         if(isNull(createPollRequest)){
             return null;
@@ -32,7 +32,7 @@ public class PollMapper {
                 .build();
 
     }
-    public PollDTO PollToPollDto(Poll poll){
+    public PollDTO pollToPollDto(Poll poll){
         if(isNull(poll)){
             return null;
         }

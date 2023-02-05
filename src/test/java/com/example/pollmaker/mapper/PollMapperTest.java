@@ -31,7 +31,7 @@ class PollMapperTest {
 
     @Test
     void createPollRequestToPoll_WhenCreatePollRequestIsNull_ReturnNull() {
-        Poll result = pollMapper.CreatePollRequestToPoll(null);
+        Poll result = pollMapper.createPollRequestToPoll(null);
         Assertions.assertNull(result);
     }
 
@@ -42,7 +42,7 @@ class PollMapperTest {
         options.add(Option.builder().value(createPollRequest.getOptions().get(0)).build());
 
         Mockito.when(optionMapper.stringToOption(ArgumentMatchers.any(List.class))).thenReturn(options);
-        Poll result = pollMapper.CreatePollRequestToPoll(createPollRequest);
+        Poll result = pollMapper.createPollRequestToPoll(createPollRequest);
 
         Assertions.assertEquals("admin", result.getOwnerName());
         Assertions.assertEquals(createPollRequest.getTitle(), result.getTitle());
