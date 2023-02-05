@@ -13,7 +13,7 @@ import static com.example.pollmaker.utils.Util.isNull;
 
 
 @Component
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor
 public class PollMapper {
     //public abstract Poll CreatePollRequestToPoll(CreatePollRequest createPollRequest);
 
