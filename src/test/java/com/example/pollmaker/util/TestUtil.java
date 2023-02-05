@@ -16,4 +16,10 @@ public class TestUtil {
                 .options(options)
                 .build();
     }
+
+    public static List<String> getOptionListForStringToOptionTest() {
+        List<String> optionStringTypeList = new ArrayList<>();
+        optionStringTypeList.add("option1");
+        return optionStringTypeList;
+    }
 }

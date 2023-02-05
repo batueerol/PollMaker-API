@@ -3,7 +3,6 @@ package com.example.pollmaker.mapper;
 import com.example.pollmaker.domain.Poll;
 import com.example.pollmaker.model.dto.PollDTO;
 import com.example.pollmaker.model.poll.CreatePollRequest;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 import org.springframework.stereotype.Component;
@@ -28,7 +27,7 @@ public class PollMapper {
 
         return Poll.builder()
                 .title(createPollRequest.getTitle())
-                .options(optionMapper.StringToOption(createPollRequest.getOptions()))
+                .options(optionMapper.stringToOption(createPollRequest.getOptions()))
                 .ownerName("admin")
                 .build();
 

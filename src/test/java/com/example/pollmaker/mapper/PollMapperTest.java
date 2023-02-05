@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentMatcher;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -16,8 +15,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 class PollMapperTest {
@@ -44,7 +41,7 @@ class PollMapperTest {
         List<Option> options = new ArrayList<>();
         options.add(Option.builder().value(createPollRequest.getOptions().get(0)).build());
 
-        Mockito.when(optionMapper.StringToOption(ArgumentMatchers.any(List.class))).thenReturn(options);
+        Mockito.when(optionMapper.stringToOption(ArgumentMatchers.any(List.class))).thenReturn(options);
         Poll result = pollMapper.CreatePollRequestToPoll(createPollRequest);
 
         Assertions.assertEquals("admin", result.getOwnerName());

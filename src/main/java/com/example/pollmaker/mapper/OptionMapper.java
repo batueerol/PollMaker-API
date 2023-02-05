@@ -12,7 +12,7 @@ import static com.example.pollmaker.utils.Util.isNull;
 @Component
 public class OptionMapper {
 //list string to list object dönüştüren lambda fonks
-    public List<Option> StringToOption(List<String> options){
+    public List<Option> stringToOption(List<String> options){
         if(isNull(options)){
             return null;
         }
