@@ -9,9 +9,7 @@ import com.example.pollmaker.repository.CustomPollRepository;
 import com.example.pollmaker.repository.PollRepository;
 import com.example.pollmaker.service.PollService;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Service;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +18,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PollServiceImpl implements PollService {
 
-
     private final PollMapper pollMapper;
     private final CustomPollRepository customPollRepository;
     private final PollRepository pollRepository;
@@ -28,24 +25,24 @@ public class PollServiceImpl implements PollService {
 
     @Override
     public PollDTO createPoll(CreatePollRequest createPollRequest) {
-        Poll poll = pollMapper.CreatePollRequestToPoll(createPollRequest);
+        Poll poll = pollMapper.createPollRequestToPoll(createPollRequest);
         poll = pollRepository.save(poll);
 
-        return pollMapper.PollToPollDto(poll);
+        return pollMapper.pollToPollDto(poll);
     }
 
     @Override
     public PollDTO updatePoll(String pollId, CreatePollRequest createPollRequest) {
 
-        Poll poll = pollMapper.CreatePollRequestToPoll(createPollRequest);
+        Poll poll = pollMapper.createPollRequestToPoll(createPollRequest);
 
-        return pollMapper.PollToPollDto(customPollRepository.updatePoll(pollId, poll));
+        return pollMapper.pollToPollDto(customPollRepository.updatePoll(pollId, poll));
     }
 
     public PollDTO vote(String pollId, VoteRequest voteRequest){
         Poll poll = customPollRepository.voteOne(pollId, voteRequest);
 
-        return pollMapper.PollToPollDto(poll);
+        return pollMapper.pollToPollDto(poll);
     }
     @Override
     public List<PollDTO> getPolls() {
@@ -54,7 +51,7 @@ public class PollServiceImpl implements PollService {
         List<PollDTO> pollDTOS = new ArrayList<>();
 
         for (Poll poll: polls) {
-           pollDTOS.add(pollMapper.PollToPollDto(poll));
+           pollDTOS.add(pollMapper.pollToPollDto(poll));
         }
         return pollDTOS;
     }
