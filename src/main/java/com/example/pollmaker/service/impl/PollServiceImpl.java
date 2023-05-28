@@ -26,7 +26,7 @@ public class PollServiceImpl implements PollService {
     @Override
     public PollDTO createPoll(CreatePollRequest createPollRequest) {
         Poll poll = pollMapper.createPollRequestToPoll(createPollRequest);
-        poll = pollRepository.save(poll);
+        poll = pollRepository.insert(poll);
 
         return pollMapper.pollToPollDto(poll);
     }

@@ -32,12 +32,17 @@ public class PollController {
     public ResponseEntity<PollDTO> updatePoll(@PathVariable String pollId, @RequestBody CreatePollRequest createPollRequest){
         PollDTO pollDTO = pollService.updatePoll(pollId, createPollRequest);
 
-        return new ResponseEntity(pollDTO, HttpStatus.OK);
+        return new ResponseEntity<>(pollDTO, HttpStatus.OK);
     }
 
     @PutMapping("/vote/{pollId}")
     public ResponseEntity<PollDTO> vote(@PathVariable String pollId, @RequestBody VoteRequest voteRequest){
         return ResponseEntity.ok(pollService.vote(pollId, voteRequest));
+    }
+
+    @GetMapping("/get")
+    public ResponseEntity<String> vote(){
+        return ResponseEntity.ok("Görüntülendi");
     }
 
    /* @GetMapping("/polls")

@@ -41,7 +41,7 @@ class PollServiceImplTest {
         PollDTO pollDTO = TestUtil.getPollDTO();
 
         Mockito.when(pollMapper.createPollRequestToPoll(ArgumentMatchers.any(CreatePollRequest.class))).thenReturn(poll);
-        Mockito.when(pollRepository.save(ArgumentMatchers.any(Poll.class))).thenReturn(poll);
+        Mockito.when(pollRepository.insert(ArgumentMatchers.any(Poll.class))).thenReturn(poll);
         Mockito.when(pollMapper.pollToPollDto(ArgumentMatchers.any(Poll.class))).thenReturn(pollDTO);
 
         PollDTO result = pollService.createPoll(createPollRequest);

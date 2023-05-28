@@ -1,11 +1,8 @@
 package com.example.pollmaker.model.poll;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotEmpty;
+import lombok.*;
+
 import java.util.List;
 
 @Data
@@ -14,9 +11,9 @@ import java.util.List;
 @Builder
 public class CreatePollRequest {
 
-    @NotEmpty
+    @NonNull
     private String title;
 
-    @NotEmpty
+    @NonNull
     private List<String> options;
 }
