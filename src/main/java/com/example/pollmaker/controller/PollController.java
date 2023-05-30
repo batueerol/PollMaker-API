@@ -1,16 +1,19 @@
 package com.example.pollmaker.controller;
 
 
+
 import com.example.pollmaker.model.dto.PollDTO;
 import com.example.pollmaker.model.poll.CreatePollRequest;
 import com.example.pollmaker.model.poll.VoteRequest;
 import com.example.pollmaker.service.PollService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 
 
 @AllArgsConstructor
@@ -40,14 +43,13 @@ public class PollController {
         return ResponseEntity.ok(pollService.vote(pollId, voteRequest));
     }
 
-    @GetMapping("/get")
-    public ResponseEntity<String> vote(){
-        return ResponseEntity.ok("Görüntülendi");
+   @GetMapping("/get/polls")
+    public ResponseEntity<Page<PollDTO>> getPolls(Pageable pageable){
+         return ResponseEntity.ok(pollService.getPolls(pageable));
     }
 
-   /* @GetMapping("/polls")
-    public ResponseEntity<List<PollDTO>> getPolls(){
-         return new ResponseEntity(pollService.getPolls(), HttpStatus.OK);
-    }*/
-
+    @GetMapping("/get/{pollId}")
+    public ResponseEntity<PollDTO> getOnePoll(@PathVariable String pollId){
+        return ResponseEntity.ok(pollService.getOnePoll(pollId));
+    }
 }

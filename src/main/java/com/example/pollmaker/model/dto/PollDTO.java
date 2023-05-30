@@ -18,6 +18,7 @@ import java.util.List;
 public class PollDTO {
 
     @JsonSerialize(using = ToStringSerializer.class)
+    private String id;
     private String title;
     private List<OptionDTO> options;
     private String ownerName;

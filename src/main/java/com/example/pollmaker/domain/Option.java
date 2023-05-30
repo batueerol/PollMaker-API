@@ -14,7 +14,7 @@ import org.bson.types.ObjectId;
 @Builder
 public class Option {
     @Builder.Default
-    private String id = new ObjectId().toString();
+    private ObjectId id = new ObjectId();
     String value;
     int voteCount;
 }

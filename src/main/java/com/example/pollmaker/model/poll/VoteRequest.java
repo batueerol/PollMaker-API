@@ -2,6 +2,7 @@ package com.example.pollmaker.model.poll;
 
 
 import lombok.*;
+import org.bson.types.ObjectId;
 
 
 @Data
@@ -10,5 +11,5 @@ import lombok.*;
 @AllArgsConstructor
 public class VoteRequest {
     @NonNull
-    String optionId;
+    ObjectId optionId;
 }

@@ -7,7 +7,6 @@ import com.example.pollmaker.model.poll.CreatePollRequest;
 import lombok.AllArgsConstructor;
 
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 
@@ -43,6 +42,7 @@ public class PollMapper {
         }
 
         return PollDTO.builder()
+                .id(poll.getId())
                 .title(poll.getTitle())
                 .options(optionMapper.optionToOptionDTO(poll.getOptions()))
                 .ownerName(poll.getOwnerName())

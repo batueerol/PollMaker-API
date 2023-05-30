@@ -3,12 +3,14 @@ package com.example.pollmaker.service;
 import com.example.pollmaker.model.dto.PollDTO;
 import com.example.pollmaker.model.poll.CreatePollRequest;
 import com.example.pollmaker.model.poll.VoteRequest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 
 public interface PollService {
-    public PollDTO createPoll(CreatePollRequest createPollRequest);
-    public PollDTO updatePoll(String pollId, CreatePollRequest createPollRequest);
-    public PollDTO vote(String pollId, VoteRequest voteRequest);
-    public List<PollDTO> getPolls();
+    PollDTO createPoll(CreatePollRequest createPollRequest);
+    PollDTO updatePoll(String pollId, CreatePollRequest createPollRequest);
+    PollDTO vote(String pollId, VoteRequest voteRequest);
+    Page<PollDTO> getPolls(Pageable pageable);
+    PollDTO getOnePoll(String pollId);
 }
