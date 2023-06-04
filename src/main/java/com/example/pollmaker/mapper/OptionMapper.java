@@ -33,6 +33,7 @@ public class OptionMapper {
         options.forEach(option -> optionDTOList.add(OptionDTO.builder()
                                                             .id(option.getId())
                                                             .value(option.getValue())
+                                                            .voteCount(option.getVoteCount())
                                                             .build()));
 
         return optionDTOList;

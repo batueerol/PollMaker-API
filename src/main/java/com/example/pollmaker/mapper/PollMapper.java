@@ -16,7 +16,6 @@ import static com.example.pollmaker.utils.Util.isNull;
 @Component
 @AllArgsConstructor
 public class PollMapper {
-    //public abstract Poll CreatePollRequestToPoll(CreatePollRequest createPollRequest);
 
     private final OptionMapper optionMapper;
 

@@ -15,4 +15,5 @@ public class OptionDTO {
     private ObjectId id;
     @NonNull
     String value;
+    int voteCount;
 }
